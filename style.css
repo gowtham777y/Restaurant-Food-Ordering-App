@@ -77,6 +77,12 @@ body{
 
 .ingredients{
     margin-bottom: 8px;
+    color: #8B8B8B;
+    font-size: 16px;
+}
+
+.item-price{
+    font-size: 20px;
 }
 
 .increase, .decrease{
@@ -96,3 +102,10 @@ body{
 .item-quantity{
     margin: 20px;
 }
+
+#restaurant-bill{
+    text-align: center;
+    padding: 50px;
+    padding-top: 0px;
+}
+
