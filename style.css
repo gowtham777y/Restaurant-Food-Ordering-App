@@ -1,3 +1,28 @@
 body{
     font-family: 'Smythe', sans-serif;
+    margin: 0;
+}
+
+.container{
+    width: 600px;
+    margin: auto;
+}
+
+#restaurant-intro{
+    height: 170px;
+    background: url("/images/restaurant-burger.jpg");
+    background-size: cover;
+    padding: 45px 0px 0px 45px;
+    color: white;
+}
+
+#restaurant-name{
+    margin-top: 0px;
+    font-size: 45px;
+    margin-bottom: 0px;
+}
+
+#restaurant-tag {
+    margin-top: 20px;
+    font-size: 25px;
 }
