@@ -185,14 +185,14 @@ body{
     font-size: 20px;
 }
 
-.hidden{
-    display: none;
-}
-
 #greeting{
     height: 120px;
     background: #ECFDF5;
     font-size: 32px;
     display: flex;
     justify-content: center;
+}
+
+.hidden{
+    display: none;
 }

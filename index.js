@@ -3,6 +3,9 @@ import { menuArray } from "./data.js";
 const restaurantMenu = document.getElementById("restaurant-menu")
 const restaurantBill = document.getElementById("restaurant-bill")
 const finalBill = document.getElementById("bill")
+const billPaymentForm = document.getElementById('bill-payment')
+const greetingSection = document.getElementById('greeting-section')
+const paymentForm = document.getElementById('payment-form')
 const items = []
 
 document.addEventListener('click',function(e){
@@ -10,7 +13,16 @@ document.addEventListener('click',function(e){
         addItemToBill(e.target.dataset.id)
     } else if (e.target.dataset.remove){
         removeItemFromBill(e.target.dataset.remove)
+    } else if (e.target.id === 'proceed-payment'){
+        billPaymentForm.classList.remove("hidden")
     }
+})
+
+paymentForm.addEventListener('submit',function(e){
+    e.preventDefault();
+    const formData = new FormData(paymentForm);
+    paymentSuccesful(formData.get('username'))
+    paymentForm.reset()
 })
 
 function addItemToBill(id){
@@ -31,8 +43,22 @@ function removeItemFromBill(id){
     renderTotalBill(items)
 }
 
+function paymentSuccesful(name){
+    billPaymentForm.classList.add("hidden")
+    restaurantBill.classList.add("hidden")
+    greetingSection.innerHTML = `
+        <div id="greeting">
+            <p>Thanks ${name}! Your Order is on it's way</p>
+        </div>
+    `
+    greetingSection.classList.remove("hidden")
+    items.length = 0
+}
+
 function renderTotalBill(items){
-    console.log(items)
+    if (!greetingSection.classList.contains("hidden")){
+        greetingSection.classList.add("hidden")
+    }
     let totalPayable = 0
     finalBill.innerHTML = items.map(function(item){
         if (item.quantity > 0){
@@ -54,12 +80,12 @@ function renderTotalBill(items){
                 <p class="item-and-quantity">Total price:</p>
                 <p id="bill-amount" class="final-item-price">$${totalPayable}</p>
             </div>
+            <button id="proceed-payment" class="complete-order">Complete Order</button>
         `
         restaurantBill.classList.remove("hidden")
     } else {
         restaurantBill.classList.add("hidden")
     }
-    console.log(restaurantBill.innerHTML)
 }
 
 function renderMenu(){

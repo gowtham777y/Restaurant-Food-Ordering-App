@@ -18,19 +18,18 @@
                 <h2>Total Bill</h2>
                 <div id="bill">
                 </div>
-                <button id="proceed-payment" class="complete-order">Complete Order</button>
-                <div id="greeting">
-                    <p>Thanks James! Your Order is on it's way</p>
-                </div>
             </section>
             <section id="bill-payment" class="hidden">
                 <h3>Enter card details</h3>
-                <form>
-                    <input type="text" required placeholder="Enter Your Name">
-                    <input type="number" maxlength="16" required placeholder="Enter Card Number">
-                    <input type="number" maxlength="3" minlength="3"  placeholder="Enter CVV">
-                    <button type="submit" id="pay" class="complete-order">Submit</button>
+                <form id="payment-form">
+                    <input type="text" required name="username" id="username" placeholder="Enter Your Name">
+                    <input type="number" maxlength="16" name="card-number" id="card-number" placeholder="Enter Card Number">
+                    <input type="number" maxlength="3" minlength="3" name="card-cvv" id="card-cvv" placeholder="Enter CVV">
+                    <button type="submit" class="complete-order">Submit</button>
                 </form>
+            </section>
+            <section id="greeting-section" class="hidden">
+                
             </section>
         </div>
         <script type="module" src="/index.js"></script>
