@@ -2,6 +2,7 @@ import { menuArray } from "./data.js";
 
 const restaurantMenu = document.getElementById("restaurant-menu")
 const restaurantBill = document.getElementById("restaurant-bill")
+const finalBill = document.getElementById("bill")
 const items = []
 
 document.addEventListener('click',function(e){
@@ -14,6 +15,36 @@ function addItemToBill(id){
             item.quantity++;
         }
     })
+    renderTotalBill(items)
+}
+
+function renderTotalBill(items){
+    console.log(items)
+    let totalPayable = 0
+    finalBill.innerHTML = items.map(function(item){
+        if (item.quantity > 0){
+            totalPayable += item.price * item.quantity
+            return `
+                <div id="item">
+                    <div>
+                        <p class="item-and-quantity">${item.name}</p>
+                        <button class="remove-item" data-remove="${item.id}">remove</button>
+                    </div>
+                    <p class="final-item-price">$${item.price * item.quantity}</p>
+                </div>
+            `
+        }
+    }).join('')
+    if (totalPayable > 0){
+        finalBill.innerHTML += `
+            <div id="final-payable">
+                <p class="item-and-quantity">Total price:</p>
+                <p id="bill-amount" class="final-item-price">$${totalPayable}</p>
+            </div>
+        `
+        restaurantBill.classList.remove("hidden")
+    }
+    console.log(restaurantBill.innerHTML)
 }
 
 function renderMenu(){
@@ -21,6 +52,8 @@ function renderMenu(){
         for (let item of menuArray){
             items.push({
                 id: `${item.id}`,
+                name: item.name,
+                price: item.price,
                 quantity: 0
             })
         }
