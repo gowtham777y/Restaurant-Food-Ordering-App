@@ -1,8 +1,30 @@
 import { menuArray } from "./data.js";
 
-const restaurantMenu = document.getElementById("restaurant-menu");
+const restaurantMenu = document.getElementById("restaurant-menu")
+const restaurantBill = document.getElementById("restaurant-bill")
+const items = []
+
+document.addEventListener('click',function(e){
+    addItemToBill(e.target.dataset.id)
+})
+
+function addItemToBill(id){
+    items.forEach(function(item){
+        if (item.id === id){
+            item.quantity++;
+        }
+    })
+}
 
 function renderMenu(){
+    if (items.length === 0){
+        for (let item of menuArray){
+            items.push({
+                id: `${item.id}`,
+                quantity: 0
+            })
+        }
+    }
     restaurantMenu.innerHTML = menuArray.map(function(item){
         return `
             <div class="menu-item">
@@ -15,7 +37,7 @@ function renderMenu(){
                     </div>
                 </div>
                 <div class="quantity">
-                    <button id="increase-btn" class="increase">+</button>
+                    <button class="increase" data-id="${item.id}">+</button>
                 </div>
             </div>
         `
