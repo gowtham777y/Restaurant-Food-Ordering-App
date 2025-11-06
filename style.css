@@ -130,3 +130,16 @@ body{
 #final-payable{
     border-top: 2px solid #393333;
 }
+
+#complete-order{
+    border: none;
+    width: 500px;
+    background: #16DB99;
+    color: white;
+    font-family:Verdana, Geneva, Tahoma, sans-serif;
+    font-weight: 700;
+    font-weight: 16px;
+    height: 60px;
+    box-shadow: 0 1 2 #000000;
+    margin-top: 25px;
+}
