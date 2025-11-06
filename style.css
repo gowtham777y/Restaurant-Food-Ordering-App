@@ -6,6 +6,7 @@ body{
 .container{
     width: 600px;
     margin: auto;
+    background: white;
 }
 
 #restaurant-intro{
@@ -131,7 +132,7 @@ body{
     border-top: 2px solid #393333;
 }
 
-#complete-order{
+.complete-order{
     border: none;
     width: 500px;
     background: #16DB99;
@@ -142,4 +143,54 @@ body{
     height: 60px;
     box-shadow: 0 1 2 #000000;
     margin-top: 25px;
+}
+
+.complete-order:hover{
+    cursor: pointer;
+}
+
+#bill-payment{
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    position: fixed;
+    width: 524px;
+    height: 524px;
+    background-color: white;
+    text-align: center;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    margin: auto;
+    box-shadow: 5.19px 5.19px 255.44px #000000;
+
+}
+
+#bill-payment h3{
+    margin-bottom: 45px;
+}
+
+#bill-payment input{
+    width: 475px;
+    height: 70px;
+    border: 1.3px solid #757575;
+    margin-bottom: 24px;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    padding-left: 20px;
+    font-size: 20px;
+}
+
+#pay{
+    font-size: 20px;
+}
+
+.hidden{
+    display: none;
+}
+
+#greeting{
+    height: 120px;
+    background: #ECFDF5;
+    font-size: 32px;
+    display: flex;
+    justify-content: center;
 }
