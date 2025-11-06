@@ -6,13 +6,26 @@ const finalBill = document.getElementById("bill")
 const items = []
 
 document.addEventListener('click',function(e){
-    addItemToBill(e.target.dataset.id)
+    if (e.target.dataset.id){
+        addItemToBill(e.target.dataset.id)
+    } else if (e.target.dataset.remove){
+        removeItemFromBill(e.target.dataset.remove)
+    }
 })
 
 function addItemToBill(id){
     items.forEach(function(item){
         if (item.id === id){
             item.quantity++;
+        }
+    })
+    renderTotalBill(items)
+}
+
+function removeItemFromBill(id){
+    items.forEach(function(item){
+        if(item.id === id){
+            item.quantity = 0;
         }
     })
     renderTotalBill(items)
@@ -43,6 +56,8 @@ function renderTotalBill(items){
             </div>
         `
         restaurantBill.classList.remove("hidden")
+    } else {
+        restaurantBill.classList.add("hidden")
     }
     console.log(restaurantBill.innerHTML)
 }
